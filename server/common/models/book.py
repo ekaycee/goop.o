@@ -1,7 +1,7 @@
 from uuid import uuid4
 from pydantic import Field
 
-from common.models import User
+from common.models.user import User
 
 
 class Book:
