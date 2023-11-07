@@ -1,4 +1,6 @@
-from pydantic import BaseSettings
+#!/usr/bin/env python
+''' Settings config module '''
+from pydantic_settings import BaseSettings
 from os import getenv
 
 
@@ -8,14 +10,14 @@ class CommonSettings(BaseSettings):
 
 
 class ServerSettings(BaseSettings):
-    HOST: str = getenv('API_HOST') | '0.0.0.0'
-    PORT: int = getenv('API_PORT') | 8000
+    HOST: str = getenv('API_HOST') or '0.0.0.0'
+    PORT: int = getenv('API_PORT') or 8000
 
 
 class DatabaseSettings(BaseSettings):
-    DB_HOST: str = getenv('DB_HOST') | '127.0.0.1'
-    DB_PORT: int = getenv('DB_PORT') | 27017
-    DB_NAME: str = getenv('DB_NAME') | 'goopo'
+    DB_HOST: str = getenv('DB_HOST') or '127.0.0.1'
+    DB_PORT: int = getenv('DB_PORT') or 27017
+    DB_NAME: str = getenv('DB_NAME') or 'goopo'
 
 
 class Settings(CommonSettings, ServerSettings, DatabaseSettings):

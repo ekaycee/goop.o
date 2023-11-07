@@ -15,6 +15,8 @@ class Base(BaseModel):
     ''' Base model class '''
     id: str = Field(default_factory=uuid4, alias='_id')
     __name__: str
+    created_at: str = Field(...)
+    updated_at: str = Field(...)
 
     def __init__(self, *args: list, **kwargs: dict):
         ''' Initialize a Base instance '''
@@ -40,6 +42,6 @@ class Base(BaseModel):
 
     class Config:
         ''' Configure the Base model class '''
-        allow_population_by_field_name = True
+        populate_by_name = True
 
 

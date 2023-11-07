@@ -3,7 +3,7 @@
 
 from json import dump, load
 
-from common.models import storage
+from common import models
 from common.models.book import Book
 from common.models.user import User
 from common.models.account import Account
@@ -74,7 +74,7 @@ class FileStorage:
         if cls not in classes.values():
             return None
 
-        all_cls = storage.all(cls)
+        all_cls = models.storage.all(cls)
         for value in all_cls.values():
             if (value.id == id):
                 return value
@@ -88,8 +88,8 @@ class FileStorage:
         if not cls:
             count = 0
             for clas in all_class:
-                count += len(storage.all(clas).values())
+                count += len(models.storage.all(clas).values())
         else:
-            count = len(storage.all(cls).values())
+            count = len(models.storage.all(cls).values())
 
         return count

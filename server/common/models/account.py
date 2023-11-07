@@ -13,6 +13,6 @@ class Account(Base):
     name: str = Field(...)
     description: str = Field(...)
     is_active: bool = False
-    plan_id: Field(default_factory=uuid4)
+    plan_id: str = Field(default_factory=uuid4)
     current_subscription_ends: datetime | None = None
     users: list[User] | None = None
