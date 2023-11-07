@@ -38,4 +38,8 @@ class Base(BaseModel):
         ''' Generate collection name automatically '''
         return p.plural(cls.__name__.lower())
 
+    class Config:
+        ''' Configure the Base model class '''
+        allow_population_by_field_name = True
+
 
