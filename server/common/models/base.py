@@ -3,15 +3,18 @@
 from uuid import uuid4
 from datetime import datetime
 from pydantic import BaseModel, Field
+from inflect import engine
 
 
 TIMESTAMP_FORMAT = '%Y-%m-%dT%H:%M:%S'
 DATA = {}
+p = engine()
 
 
 class Base(BaseModel):
     ''' Base model class '''
     id: str = Field(default_factory=uuid4, alias='_id')
+    __name__: str
 
     def __init__(self, *args: list, **kwargs: dict):
         ''' Initialize a Base instance '''
@@ -30,5 +33,9 @@ class Base(BaseModel):
                                                 TIMESTAMP_FORMAT)
         else:
             self.updated_at = datetime.utcnow()
+
+    def __tablename__(cls) -> str:    
+        ''' Generate table name automatically '''
+        return p.plural(cls.__name__.lower())
 
 

@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 ''' Book controller module '''
 from fastapi import Body, Request
