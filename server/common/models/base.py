@@ -34,8 +34,8 @@ class Base(BaseModel):
         else:
             self.updated_at = datetime.utcnow()
 
-    def __tablename__(cls) -> str:    
-        ''' Generate table name automatically '''
+    def __colname__(cls) -> str:    
+        ''' Generate collection name automatically '''
         return p.plural(cls.__name__.lower())
 
 
